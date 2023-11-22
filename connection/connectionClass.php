@@ -16,7 +16,7 @@
 
                      }catch(PDOException $error){
                      
-                            echo "There is wrong this is desc... " . $erro->getMessague();
+                            echo "There is wrong this is desc... " . $error->getMessage();
                      }
             
         
