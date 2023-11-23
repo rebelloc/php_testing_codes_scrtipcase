@@ -1,9 +1,5 @@
 <?php 
-   header('Content-Type: text/html; charset=utf-8');
-   include 'connection/crudClass.php';
-   $response = new crudClass();
-   $rsp = $response->selectFunction();
-
+   include 'fetch-information.php'
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -13,6 +9,12 @@
     <title>Document</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <style>
+          label{
+            font-weight: bold;
+          }
+          .labell{
+            font-weight: bold;
+          }
           .main-form{
              padding-top: 50px; 
              padding-left: 50px;
@@ -23,34 +25,16 @@
     </style>
 </head>
 <body>
-<div class="col-md-12 main-form">
-   <div class="mt-4">
-   <form class="form">
-    <div class="form-group">
-        <label for="id"></label>
-        <input type="hidden" class="form-control" id="id">
-        <small id="" class=""></small>
-    </div>
-    <div class="form-group">
-        <label for="actividad">Actividad</label>
-        <input type="text" class="form-control" id="actividad" placeholder="actividad">
-    </div>
-    <div class="form-group mt-2">
-        <label for="actividad">Actividad description</label>
-        <textarea type="text" class="form-control" id="actividad" placeholder="actividad" rows="4" cols="50"></textarea>
-    </div>
-    <button type="submit" class="btn btn-primary mt-2"></button>
-    </form>
-   </div>
+
+   <?php include 'form-input.php' ?>
 
 <!-- Where the table is goning printing --->
 
-   <div class="col-md-12">
+<div class="container col-md-12">
    <table class="table stripped mt-4">
       <thead>
         <tr>
-            <th>Número de actividad</th>
-            <th>año</th>
+            <th>Número de actividad</th>    
             <th>Fecha</th>
             <th>Nombre Director</th>
             <th>Unidad Administrativa</th>
@@ -69,6 +53,7 @@
             <th>aprobadoJefePlanif</th>
             <th>totalAumenta</th>
             <th>totalDisminuye</th>
+            <th>año</th>
             <th>Actualizar</th>
             <th>Eliminar</th>
         
@@ -78,7 +63,6 @@
         <?php foreach($rsp as $rs) { ?>
         <tr>
             <td><?php echo $rs['numeroActividad'] ?></td>
-            <td><?php echo $rs['anio'] ?></td>
             <td><?php echo $rs['fecha'] ?></td>
             <td><?php echo $rs['nombreDirector'] ?></td>
             <td><?php echo $rs['unidadAdministrativa'] ?></td>
@@ -97,13 +81,13 @@
             <td><?php echo $rs['aprobadoJefePlanif'] ?></td>
             <td><?php echo $rs['totalAumenta'] ?></td>
             <td><?php echo $rs['totalDisminuye'] ?></td>
+            <td><?php echo $rs['anio'] ?></td>
             <td><button class="btn btn-warning">Update</button</td>
             <td><button class="btn btn-warning">Delete</button</td>
         </tr>
-        <?php } ?>
+        <?php } ?>  
       </tbody>
     </table>
-   </div>
 </div>
 
 
